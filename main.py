@@ -1,7 +1,9 @@
 from src.price_prediction import logger
 from src.price_prediction.pipeline.stage_data_ingestion import DataIngestionTrainingPipeline
+from src.price_prediction.pipeline.stage_data_validation import DataValidationTrainingPipeline
 
-STAGE_NAME = "Data Ingestion STAGE"
 
 data_ingestion_pipeline = DataIngestionTrainingPipeline()
 data_ingestion_pipeline.main()
+data_validation_pipeline = DataValidationTrainingPipeline()
+data_validation_pipeline.main()
