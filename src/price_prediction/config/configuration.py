@@ -1,6 +1,6 @@
 from src.price_prediction.constants import *
 from src.price_prediction.utils.common import read_yaml, create_directories
-from price_prediction.entity.config_entity import DataIngestionConfig, DataValidationConfig,DataTransformationConfig
+from price_prediction.entity.config_entity import DataIngestionConfig, DataValidationConfig,DataTransformationConfig, ModelTrainerConfig
 class Configuration:
     def __init__(self, 
     config_filepath = CONFIG_FILE_PATH,
@@ -50,3 +50,17 @@ class Configuration:
             data_path = Path(config.data_path)
         )
         return data_transformation_config
+    
+
+    def get_model_trainer_config(self):
+        config = self.config.model_trainer
+        schema = self.schema.TARGET_COLUMN
+
+        create_directories([config.root_dir])
+        return ModelTrainerConfig(
+            root_dir = config.root_dir,
+            train_data_path = config.train_data_path,
+            test_data_path = config.test_data_path,
+            model_name = config.model_name,
+            target_column = str(list(schema.keys())[0])
+        )
