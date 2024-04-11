@@ -1,10 +1,10 @@
 import os
-from price_prediction import logger
+from src.price_prediction import logger
 from sklearn.model_selection import train_test_split
 import pandas as pd
-
+from src.price_prediction.entity.config_entity import DataTransformationConfig
 class DataTransformation:
-    def __init__(self, config):
+    def __init__(self, config : DataTransformationConfig):
         self.config = config
         self.data = pd.read_csv(self.config.data_path)
 
