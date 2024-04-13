@@ -1,6 +1,6 @@
 from src.price_prediction.constants import *
-from src.price_prediction.utils.common import read_yaml, create_directories
-from price_prediction.entity.config_entity import DataIngestionConfig, DataValidationConfig,DataTransformationConfig, ModelTrainerConfig
+from src.price_prediction.utils.common import read_yaml, create_directories ,   save_json
+from price_prediction.entity.config_entity import DataIngestionConfig, DataValidationConfig,DataTransformationConfig, ModelTrainerConfig, ModelEvaluateConfig
 class Configuration:
     def __init__(self, 
     config_filepath = CONFIG_FILE_PATH,
@@ -63,4 +63,18 @@ class Configuration:
             test_data_path = config.test_data_path,
             model_name = config.model_name,
             target_column = str(list(schema.keys())[0])
+        )
+    
+    def get_model_evaluation_config(self):
+        config = self.config.model_evaluation
+        schema = self.schema.TARGET_COLUMN
+
+        create_directories([config.root_dir])
+        return ModelEvaluateConfig(
+            root_dir = Path(config.root_dir),
+            test_data_path = Path(config.test_data_path),
+            model_path = Path(config.model_path),
+            metric_file_name = Path(config.metric_file_name),
+            target_column = str(list(schema.keys())[0]),
+            mlflow_uri = config.mlflow_uri
         )
