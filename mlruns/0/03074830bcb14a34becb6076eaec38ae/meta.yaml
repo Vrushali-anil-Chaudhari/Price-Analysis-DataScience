@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/pp/Price-Analysis-DataScience/mlruns/0/03074830bcb14a34becb6076eaec38ae/artifacts
+end_time: 1712987959743
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 03074830bcb14a34becb6076eaec38ae
+run_name: stately-fox-146
+run_uuid: 03074830bcb14a34becb6076eaec38ae
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1712987951204
+status: 3
+tags: []
+user_id: vrush
